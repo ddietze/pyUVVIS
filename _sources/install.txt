@@ -1,0 +1,36 @@
+Installing pyUVVIS
+==================
+
+There is no installation routine / setup file yet.
+In order to use pyUVVIS, first make sure that all the prerequisites are met.
+Then download and unpack the zip archive and execute the main file *pyUVVIS.py* using python.
+
+I have tested/developed this program using Python 2.7, mainly due to the availability of wxPython at that time.
+However, it should also run under Python 3 (maybe with some fixes to the print-syntax).
+
+Prerequisites:
+--------------
+
+For the GUI to run, make sure you have the following installed:
+
+    * wxPython
+    * Numpy
+
+For an OceanOptics-based spectrometer, install
+
+    * python-seabreeze (<https://github.com/ap--/python-seabreeze>)
+
+For a uc480-based spectrometer, also install
+
+    * Thorlabs' *uc480* library (<http://www.thorlabs.com>).
+
+.. note:: At the time of writing, I have been using the old uc480 library, also on linux. Meanwhile there is a new library called *ThorCam*, but I have not yet had time to integrate it.
+
+Camera Selection:
+-----------------
+
+The program looks for uc480 and OceanOptics devices at startup.
+If both are found, it will prompt a dialog to choose which one to use. If none are found,
+it starts anyway and provides a randomly generated signal for testing purposes.
+
+Currently, only the first connected uc480 or OceanOptics spectrometer can be used.

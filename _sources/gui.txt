@@ -1,0 +1,75 @@
+Using pyUVVIS
+=============
+
+.. figure:: screenshot1.png
+   :width: 640px
+   :align: center
+
+   Screenshot of the pyUVVIS main window showing the spectra of a fluorescent lamp (orange) and a white LED (yellow) as measured with an OceanOptics USB2000.
+
+The user interface
+------------------
+
+The pyUVVIS user interface consists of a toolbar and a main plotting window for displaying the spectra.
+The program is entirely controlled via the buttons in the tool bar.
+
+.. figure:: gui.png
+   :width: 800px
+   :align: center
+
+   Overview over pyUVVIS controls.
+
+**Save**: Save the current spectrum (as displayed) as a two-column, TAB-separated ASCII file (wavelength / intensity or OD). After saving the spectrum,
+it is automatically added to the stack of spectra and is displayed in a different color.
+
+**Load**: Load a spectrum (same format as above) and add it to the stack of spectra for displaying.
+
+**Remove Last**: Remove the last spectrum from the display stack.
+
+**Averages**: Decrease / increase number of averages for a recording session by pressing the up / down arrows. Left click decreases / increases by 1 unit, right click by 10 units. Does not affect the live view.
+
+**Gain**: If camera supports gain settings, decrease / increase gain by pressing the up / down arrows. Left click decreases / increases by 1 unit, right click by 10 units.
+
+**Exposure**: If camera supports exposure time settings, decrease / increase exposure time by pressing the up / down arrows. Left click decreases / increases by 1 unit, right click by 10 units.
+
+**Start/Stop**: Start or stop live view or stop a recording. Live view takes a single exposure and displays it.
+
+**Record**: Start a recording session, which averages over the stated number of exposures. The recording stops automatically (the start/stop button turns back to start).
+
+**Mode**: Switch acquisition modes between direct spectrum and UV/VIS. Direct spectrum (open lock) directly displays the measured light intensity. UV/VIS mode (closed lock) displays the optical density, i.e., the negative decadic logarithm of the ratio of spectrum to reference spectrum. The last recorded spectrum is used as reference when the mode is switched from direct to UV/VIS.
+
+**Over**: Indicator for over exposure. If active, the exposure time, gain or light intensity should be reduced.
+
+**AutoExp**: Try to automatically adjust exposure time and gain settings so as not to saturate the detector. Requires the user to stop any running acquisitions beforehand. Warning: once started, it cannot be stopped currently.
+
+**Dark**: Switches dark / background spectrum subtraction on or off. The last recorded spectrum is thereby used as background spectrum and will be subtracted from each newly acquired spectrum before displaying or calculating the UV/VIS.
+
+**Quit**: Close the application.
+
+Measurement protocol
+--------------------
+
+While recording a direct spectrum is straightforward, there are some more steps involved in getting a decent UV/VIS spectrum.
+Therefore, I'll give a short protocol for measuring UV/VIS spectra with pyUVVIS:
+
+    1. Setup the light source and empty cuvette or sample mount for the reference spectrum.
+    2. Use the live view to optimize alignment, light intensity, exposure and gain settings etc.
+    3. Alternatively, run `AutoExp` for automatic adjustment of camera settings.
+    4. Block or switch off light source and record a dark spectrum: select number of exposures and press `Record`.
+    5. Switch on background subtraction by pressing `Dark`.
+    6. Unblock of switch on light source and record a reference spectrum (see 4).
+    7. Now switch to UV/VIS mode by pressing `Mode`. The lock symbol will close and the y-axis label changes from *Counts* to *OD*.
+    8. Insert your sample and record a UV/VIS spectrum (see 4).
+    9. Congratulations!
+
+.. figure:: screenshot3.png
+   :width: 480px
+   :align: center
+
+   Screenshot of the direct spectrum of the light source before switching modes. This spectrum is used as reference. Measured with uc480-based spectrometer.
+
+.. figure:: screenshot4.png
+   :width: 480px
+   :align: center
+
+   Screenshot of the UV/VIS spectrum of a 30um thick free-standing film of PVA mixed with rhodamine B dye. Measured with uc480-based spectrometer.

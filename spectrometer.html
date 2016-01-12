@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to build a simple spectrometer &mdash; pyUVVIS 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+    <link rel="top" title="pyUVVIS 1.0 documentation" href="index.html" />
+    <link rel="next" title="Calibration of home-built spectrometers" href="calibration.html" />
+    <link rel="prev" title="Using pyUVVIS" href="gui.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="calibration.html" title="Calibration of home-built spectrometers"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="gui.html" title="Using pyUVVIS"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyUVVIS 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing pyUVVIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Using pyUVVIS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">How to build a simple spectrometer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration.html">Calibration of home-built spectrometers</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="how-to-build-a-simple-spectrometer">
+<h1>How to build a simple spectrometer<a class="headerlink" href="#how-to-build-a-simple-spectrometer" title="Permalink to this headline">¶</a></h1>
+<p>Building a simple optical spectrometer is quite straightforward and there are many excellent tutorials out there.
+I recommend taking a look at the respective Wikipedia page: &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Optical_spectrometer">https://en.wikipedia.org/wiki/Optical_spectrometer</a>&gt; for a starter.</p>
+<p>In the following, I share the design that I am currently using.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/spectrometer.png"><img alt="_images/spectrometer.png" src="_images/spectrometer.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Simple grating spectrometer assembly. The boxed / shaded area should be placed in a closed box.</span></p>
+</div>
+<p>In order to get the light into the spectrometer, I use a narrow core multimode fiber which offers
+both flexibility and ease of use. The fiber also replaces the slit that is normally present in spectrometers
+and therefore, the core should not be too big. I found 35 um to give good results.</p>
+<p>The first lens is used to collimate the output of the fiber. Use a focal length such that
+you can fully illuminate the grating, 25 mm worked fine for me. If you can get hold of a pigtailed fiber
+where the collimator is already attached - perfect!</p>
+<p>I am using a visible transmission grating from Thorlabs with 0.5 x 0.5&#8221; side lengths.
+Choose the number of grooves per mm depending on your application. Higher groove density gives higher resolution but
+smaller bandwidth. A value of 300 grooves / mm in combination with the 100 mm cylindrical lens and the Thorlabs DCC1545M CMOS camera
+gives a spectral coverage of 500 nm (450 to 950 nm), for example.</p>
+<p>In order to image the spectrum onto the CMOS chip, I use a cylindrical lens with 100 mm focal length that gets placed
+exactly in the center between grating and CMOS chip at exactly one focal length distance to each. The cylindrical lens
+ensures optimal illumination of the entire CMOS chip, while you would choose a spherical lens for a photodiode array.</p>
+<p>As a detector, I am currently using the monochrome CMOS camera DCC1545M from Thorlabs without objective lens, which is
+compatible with the uc480 camera library.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="calibration.html" title="Calibration of home-built spectrometers"
+             >next</a></li>
+        <li class="right" >
+          <a href="gui.html" title="Using pyUVVIS"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyUVVIS 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Daniel R. Dietze.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

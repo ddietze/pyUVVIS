@@ -1,0 +1,33 @@
+How to build a simple spectrometer
+==================================
+
+Building a simple optical spectrometer is quite straightforward and there are many excellent tutorials out there.
+I recommend taking a look at the respective Wikipedia page: <https://en.wikipedia.org/wiki/Optical_spectrometer> for a starter.
+
+In the following, I share the design that I am currently using.
+
+.. figure:: spectrometer.png
+   :width: 800px
+   :align: center
+
+   Simple grating spectrometer assembly. The boxed / shaded area should be placed in a closed box.
+
+In order to get the light into the spectrometer, I use a narrow core multimode fiber which offers
+both flexibility and ease of use. The fiber also replaces the slit that is normally present in spectrometers
+and therefore, the core should not be too big. I found 35 um to give good results.
+
+The first lens is used to collimate the output of the fiber. Use a focal length such that
+you can fully illuminate the grating, 25 mm worked fine for me. If you can get hold of a pigtailed fiber
+where the collimator is already attached - perfect!
+
+I am using a visible transmission grating from Thorlabs with 0.5 x 0.5" side lengths.
+Choose the number of grooves per mm depending on your application. Higher groove density gives higher resolution but
+smaller bandwidth. A value of 300 grooves / mm in combination with the 100 mm cylindrical lens and the Thorlabs DCC1545M CMOS camera
+gives a spectral coverage of 500 nm (450 to 950 nm), for example.
+
+In order to image the spectrum onto the CMOS chip, I use a cylindrical lens with 100 mm focal length that gets placed
+exactly in the center between grating and CMOS chip at exactly one focal length distance to each. The cylindrical lens
+ensures optimal illumination of the entire CMOS chip, while you would choose a spherical lens for a photodiode array.
+
+As a detector, I am currently using the monochrome CMOS camera DCC1545M from Thorlabs without objective lens, which is
+compatible with the uc480 camera library. 

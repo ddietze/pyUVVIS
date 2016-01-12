@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing pyUVVIS &mdash; pyUVVIS 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+    <link rel="top" title="pyUVVIS 1.0 documentation" href="index.html" />
+    <link rel="next" title="Using pyUVVIS" href="gui.html" />
+    <link rel="prev" title="pyUVVIS - A simple UV/VIS and Spectrometer GUI" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="gui.html" title="Using pyUVVIS"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="pyUVVIS - A simple UV/VIS and Spectrometer GUI"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyUVVIS 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Installing pyUVVIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Using pyUVVIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectrometer.html">How to build a simple spectrometer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration.html">Calibration of home-built spectrometers</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installing-pyuvvis">
+<h1>Installing pyUVVIS<a class="headerlink" href="#installing-pyuvvis" title="Permalink to this headline">¶</a></h1>
+<p>There is no installation routine / setup file yet.
+In order to use pyUVVIS, first make sure that all the prerequisites are met.
+Then download and unpack the zip archive and execute the main file <em>pyUVVIS.py</em> using python.</p>
+<p>I have tested/developed this program using Python 2.7, mainly due to the availability of wxPython at that time.
+However, it should also run under Python 3 (maybe with some fixes to the print-syntax).</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites:<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>For the GUI to run, make sure you have the following installed:</p>
+<blockquote>
+<div><ul class="simple">
+<li>wxPython</li>
+<li>Numpy</li>
+</ul>
+</div></blockquote>
+<p>For an OceanOptics-based spectrometer, install</p>
+<blockquote>
+<div><ul class="simple">
+<li>python-seabreeze (&lt;<a class="reference external" href="https://github.com/ap--/python-seabreeze">https://github.com/ap&#8211;/python-seabreeze</a>&gt;)</li>
+</ul>
+</div></blockquote>
+<p>For a uc480-based spectrometer, also install</p>
+<blockquote>
+<div><ul class="simple">
+<li>Thorlabs&#8217; <em>uc480</em> library (&lt;<a class="reference external" href="http://www.thorlabs.com">http://www.thorlabs.com</a>&gt;).</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At the time of writing, I have been using the old uc480 library, also on linux. Meanwhile there is a new library called <em>ThorCam</em>, but I have not yet had time to integrate it.</p>
+</div>
+</div>
+<div class="section" id="camera-selection">
+<h2>Camera Selection:<a class="headerlink" href="#camera-selection" title="Permalink to this headline">¶</a></h2>
+<p>The program looks for uc480 and OceanOptics devices at startup.
+If both are found, it will prompt a dialog to choose which one to use. If none are found,
+it starts anyway and provides a randomly generated signal for testing purposes.</p>
+<p>Currently, only the first connected uc480 or OceanOptics spectrometer can be used.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="gui.html" title="Using pyUVVIS"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="pyUVVIS - A simple UV/VIS and Spectrometer GUI"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyUVVIS 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Daniel R. Dietze.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

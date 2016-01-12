@@ -1,0 +1,24 @@
+Calibration of home-built spectrometers
+=======================================
+
+When you are using a home-built spectrometer with a CCD or CMOS detector,
+the camera returns just an array of intensities and gives no hint on the actual wavelength.
+Therefore, it is necessary to calibrate the spectrometer before use.
+
+Calibration in pyUVVIS is handled in a simple but straightforward way:
+
+    1. Record a calibration spectrum with a working spectrometer or use a gas lamp with tabulated lines (a fluorescent light bulb works fine).
+    2. Record the same light source using pyUVVIS in spectrometer mode. The spectrum should be displayed versus pixel position.
+    3. Open both files in your favorite data analysis app or simply plot both using python.
+    4. Now select prominent spectral features from both spectra whose position is easily identifiable.
+    5. Make a new file with two columns: the first column contains the pixel indices and the second column the actual wavelength of these features.
+    6. Save this file as `calibration.dat` in the pyUVVIS main directory (where `pyUVVIS.py` is located).
+    7. On the next start of pyUVVIS, it reads these calibration values and calculates the wavelength axis through a linear regression.
+
+If you are not happy with the calibration, simply overwrite or delete `calibration.dat`.
+
+.. figure:: screenshot2.png
+   :width: 480px
+   :align: center
+
+   This image shows a comparison of spectra of a fluorescent lamp recorded with an OceanOptics USB2000 and my homebuilt uc480 spectrometer after calibration.

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Calibration of home-built spectrometers &mdash; pyUVVIS 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+    <link rel="top" title="pyUVVIS 1.0 documentation" href="index.html" />
+    <link rel="prev" title="How to build a simple spectrometer" href="spectrometer.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="spectrometer.html" title="How to build a simple spectrometer"
+             accesskey="P">previous</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyUVVIS 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing pyUVVIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Using pyUVVIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectrometer.html">How to build a simple spectrometer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Calibration of home-built spectrometers</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="calibration-of-home-built-spectrometers">
+<h1>Calibration of home-built spectrometers<a class="headerlink" href="#calibration-of-home-built-spectrometers" title="Permalink to this headline">¶</a></h1>
+<p>When you are using a home-built spectrometer with a CCD or CMOS detector,
+the camera returns just an array of intensities and gives no hint on the actual wavelength.
+Therefore, it is necessary to calibrate the spectrometer before use.</p>
+<p>Calibration in pyUVVIS is handled in a simple but straightforward way:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Record a calibration spectrum with a working spectrometer or use a gas lamp with tabulated lines (a fluorescent light bulb works fine).</li>
+<li>Record the same light source using pyUVVIS in spectrometer mode. The spectrum should be displayed versus pixel position.</li>
+<li>Open both files in your favorite data analysis app or simply plot both using python.</li>
+<li>Now select prominent spectral features from both spectra whose position is easily identifiable.</li>
+<li>Make a new file with two columns: the first column contains the pixel indices and the second column the actual wavelength of these features.</li>
+<li>Save this file as <cite>calibration.dat</cite> in the pyUVVIS main directory (where <cite>pyUVVIS.py</cite> is located).</li>
+<li>On the next start of pyUVVIS, it reads these calibration values and calculates the wavelength axis through a linear regression.</li>
+</ol>
+</div></blockquote>
+<p>If you are not happy with the calibration, simply overwrite or delete <cite>calibration.dat</cite>.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/screenshot2.png"><img alt="_images/screenshot2.png" src="_images/screenshot2.png" style="width: 480px;" /></a>
+<p class="caption"><span class="caption-text">This image shows a comparison of spectra of a fluorescent lamp recorded with an OceanOptics USB2000 and my homebuilt uc480 spectrometer after calibration.</span></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="spectrometer.html" title="How to build a simple spectrometer"
+             >previous</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyUVVIS 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Daniel R. Dietze.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

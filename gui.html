@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using pyUVVIS &mdash; pyUVVIS 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+    <link rel="top" title="pyUVVIS 1.0 documentation" href="index.html" />
+    <link rel="next" title="How to build a simple spectrometer" href="spectrometer.html" />
+    <link rel="prev" title="Installing pyUVVIS" href="install.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="spectrometer.html" title="How to build a simple spectrometer"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installing pyUVVIS"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyUVVIS 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing pyUVVIS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Using pyUVVIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectrometer.html">How to build a simple spectrometer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration.html">Calibration of home-built spectrometers</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-pyuvvis">
+<h1>Using pyUVVIS<a class="headerlink" href="#using-pyuvvis" title="Permalink to this headline">¶</a></h1>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/screenshot1.png"><img alt="_images/screenshot1.png" src="_images/screenshot1.png" style="width: 640px;" /></a>
+<p class="caption"><span class="caption-text">Screenshot of the pyUVVIS main window showing the spectra of a fluorescent lamp (orange) and a white LED (yellow) as measured with an OceanOptics USB2000.</span></p>
+</div>
+<div class="section" id="the-user-interface">
+<h2>The user interface<a class="headerlink" href="#the-user-interface" title="Permalink to this headline">¶</a></h2>
+<p>The pyUVVIS user interface consists of a toolbar and a main plotting window for displaying the spectra.
+The program is entirely controlled via the buttons in the tool bar.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="_images/gui.png"><img alt="_images/gui.png" src="_images/gui.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Overview over pyUVVIS controls.</span></p>
+</div>
+<p><strong>Save</strong>: Save the current spectrum (as displayed) as a two-column, TAB-separated ASCII file (wavelength / intensity or OD). After saving the spectrum,
+it is automatically added to the stack of spectra and is displayed in a different color.</p>
+<p><strong>Load</strong>: Load a spectrum (same format as above) and add it to the stack of spectra for displaying.</p>
+<p><strong>Remove Last</strong>: Remove the last spectrum from the display stack.</p>
+<p><strong>Averages</strong>: Decrease / increase number of averages for a recording session by pressing the up / down arrows. Left click decreases / increases by 1 unit, right click by 10 units. Does not affect the live view.</p>
+<p><strong>Gain</strong>: If camera supports gain settings, decrease / increase gain by pressing the up / down arrows. Left click decreases / increases by 1 unit, right click by 10 units.</p>
+<p><strong>Exposure</strong>: If camera supports exposure time settings, decrease / increase exposure time by pressing the up / down arrows. Left click decreases / increases by 1 unit, right click by 10 units.</p>
+<p><strong>Start/Stop</strong>: Start or stop live view or stop a recording. Live view takes a single exposure and displays it.</p>
+<p><strong>Record</strong>: Start a recording session, which averages over the stated number of exposures. The recording stops automatically (the start/stop button turns back to start).</p>
+<p><strong>Mode</strong>: Switch acquisition modes between direct spectrum and UV/VIS. Direct spectrum (open lock) directly displays the measured light intensity. UV/VIS mode (closed lock) displays the optical density, i.e., the negative decadic logarithm of the ratio of spectrum to reference spectrum. The last recorded spectrum is used as reference when the mode is switched from direct to UV/VIS.</p>
+<p><strong>Over</strong>: Indicator for over exposure. If active, the exposure time, gain or light intensity should be reduced.</p>
+<p><strong>AutoExp</strong>: Try to automatically adjust exposure time and gain settings so as not to saturate the detector. Requires the user to stop any running acquisitions beforehand. Warning: once started, it cannot be stopped currently.</p>
+<p><strong>Dark</strong>: Switches dark / background spectrum subtraction on or off. The last recorded spectrum is thereby used as background spectrum and will be subtracted from each newly acquired spectrum before displaying or calculating the UV/VIS.</p>
+<p><strong>Quit</strong>: Close the application.</p>
+</div>
+<div class="section" id="measurement-protocol">
+<h2>Measurement protocol<a class="headerlink" href="#measurement-protocol" title="Permalink to this headline">¶</a></h2>
+<p>While recording a direct spectrum is straightforward, there are some more steps involved in getting a decent UV/VIS spectrum.
+Therefore, I&#8217;ll give a short protocol for measuring UV/VIS spectra with pyUVVIS:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Setup the light source and empty cuvette or sample mount for the reference spectrum.</li>
+<li>Use the live view to optimize alignment, light intensity, exposure and gain settings etc.</li>
+<li>Alternatively, run <cite>AutoExp</cite> for automatic adjustment of camera settings.</li>
+<li>Block or switch off light source and record a dark spectrum: select number of exposures and press <cite>Record</cite>.</li>
+<li>Switch on background subtraction by pressing <cite>Dark</cite>.</li>
+<li>Unblock of switch on light source and record a reference spectrum (see 4).</li>
+<li>Now switch to UV/VIS mode by pressing <cite>Mode</cite>. The lock symbol will close and the y-axis label changes from <em>Counts</em> to <em>OD</em>.</li>
+<li>Insert your sample and record a UV/VIS spectrum (see 4).</li>
+<li>Congratulations!</li>
+</ol>
+</div></blockquote>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="_images/screenshot3.png"><img alt="_images/screenshot3.png" src="_images/screenshot3.png" style="width: 480px;" /></a>
+<p class="caption"><span class="caption-text">Screenshot of the direct spectrum of the light source before switching modes. This spectrum is used as reference. Measured with uc480-based spectrometer.</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="_images/screenshot4.png"><img alt="_images/screenshot4.png" src="_images/screenshot4.png" style="width: 480px;" /></a>
+<p class="caption"><span class="caption-text">Screenshot of the UV/VIS spectrum of a 30um thick free-standing film of PVA mixed with rhodamine B dye. Measured with uc480-based spectrometer.</span></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="spectrometer.html" title="How to build a simple spectrometer"
+             >next</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installing pyUVVIS"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyUVVIS 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Daniel R. Dietze.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
